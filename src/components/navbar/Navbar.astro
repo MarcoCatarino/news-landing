@@ -1,0 +1,85 @@
+---
+import Logo from "../../assets/images/logo.svg";
+import IconClose from "../../assets/images/icon-menu-close.svg";
+import IconOpen from "../../assets/images/icon-menu.svg";
+
+interface NavItem {
+  text: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  {
+    text: "Home",
+    href: "/",
+  },
+  {
+    text: "News",
+    href: "/new",
+  },
+  {
+    text: "Populars",
+    href: "/popular",
+  },
+  {
+    text: "Trending",
+    href: "/trending",
+  },
+  {
+    text: "Categories",
+    href: "/categories",
+  },
+];
+---
+
+<nav class="w-[375px] border border-red-500 flex justify-between items-center">
+  <a href="/">
+    <Logo />
+  </a>
+
+  <IconOpen id="open-btn" class="cursor-pointer" />
+
+  <div id="menu-modal" class="bg-black/50 fixed inset-0 hidden">
+    <div
+      class="flex flex-col items-end px-5 py-7 bg-Off-white absolute right-0 h-screen"
+    >
+      <IconClose id="close-btn" class="cursor-pointer" />
+
+      <ul class="flex flex-col gap-6 w-64 mt-22">
+        {
+          navItems.map((item: NavItem) => (
+            <li class="">
+              <a
+                class="text-lg cursor-pointer hover:text-Soft-orange"
+                href={item.href}
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const closeBtn = document.getElementById("close-btn");
+  const openBtn = document.getElementById("open-btn");
+  const modal = document.getElementById("menu-modal");
+  const menuItems = document.getElementsByTagName("a");
+
+  closeBtn?.addEventListener("click", () => {
+    modal?.classList.add("hidden");
+  });
+
+  openBtn?.addEventListener("click", () => {
+    modal?.classList.remove("hidden");
+  });
+
+  menuItems.forEach((item: HTMLAnchorElement) => {
+    item.addEventListener("click", () => {
+      modal?.classList.add("hidden");
+    });
+  });
+</script>
