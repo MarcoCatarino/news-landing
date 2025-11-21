@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 
-import Navbar from "../components/navbar/Navbar.astro";
+import Navbar from "../sections/Navbar.astro";
 
 const siteData = {
   title: "Newsletter Page",
@@ -20,10 +20,10 @@ const { title = siteData.title, description = siteData.description } =
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
-  <body
-    class="flex flex-col max-w-7xl items-center font-Inter"
-  >
-    <Navbar />
-    <slot />
+  <body class="flex flex-col items-center font-Inter">
+    <main class="my-8 p-6 xl:w-[1112px]">
+      <Navbar />
+      <slot />
+    </main>
   </body>
 </html>
