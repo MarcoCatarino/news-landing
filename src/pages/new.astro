@@ -1,7 +1,11 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import NewArticle from "../components/new/NewArticle.astro";
+import { articles } from "../common/articles";
 ---
 
 <MainLayout>
-  <h2>News</h2>
+  <div class="xl:grid xl:grid-cols-2 xl: gap-6">
+    {articles.map((article) => <NewArticle {...article} />)}
+  </div>
 </MainLayout>
